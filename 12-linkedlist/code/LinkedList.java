@@ -11,7 +11,92 @@ class LinkedList {
     public getSize(){
       return size;
     }
-  
+
+    public Node find(int value) {
+        Node current = head;
+
+        while (current != null) {
+            if (current.value == value) {
+                return current;
+            }
+            current = current.next;
+        }
+
+        return null;
+    }
+    
+    public Node get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Enter the Valid Index!!!");
+        }
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current;
+    }
+    
+    public int delete(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(
+                "Index: " + index + ", Size: " + size);
+        }
+        if (index == 0) {
+            return deleteFirst();
+        }
+        if (index == size - 1) {
+            return deleteLast();
+        }
+
+        Node current = head;
+        for (int i = 1; i < index; i++) {
+            current = current.next;
+        }
+        int value = current.next.value;
+        current.next = current.next.next;
+        size--;
+
+        return value;
+    }
+    
+    public int deleteLast() {
+        if (tail == null) {
+            throw new IllegalStateException("Linked List is empty");
+        }
+
+        if (size == 1) {
+            return deleteFirst();
+        }
+
+        int value = tail.value;
+
+        Node current = head;
+        while (current.next != tail) {
+            current = current.next;
+        }
+
+        tail = current;
+        tail.next = null;
+        size--;
+
+        return value;
+    }
+    
+    public int deleteFirst() {
+        if (head == null) {
+            throw new IllegalStateException("Linked List is empty");
+        }
+
+        int value = head.value;
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return value;
+    }
+    
     public void addFirst(int value) {
 
         Node newNode = new Node(value);
@@ -96,13 +181,13 @@ class LinkedList {
 class Node {
 
     int value;
-    Node next;
+    Node next; //reference of Object type is by default always null.
 
-    Node(int value) {
+    public Node(int value) {
         this.value = value;
     }
 
-    Node(int value, Node next) {
+    public Node(int value, Node next) {
         this.value = value;
         this.next = next;
     }

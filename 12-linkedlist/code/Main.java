@@ -2,20 +2,29 @@ public class Main {
     public static void main(String[] args) {
     
         LinkedList ll = new LinkedList();
-    
-        ll.addLast(10);
-        ll.addLast(20);
-        ll.addLast(30);
-    
+        
+        System.out.println("Size: " + ll.getSize());
+        ll.addFirst(1);
+        ll.addFirst(2);
         ll.display();
-    
-        ll.insert(15, 1);
+        System.out.println("Size: " + ll.getSize());
+        ll.addFirst(3);
         ll.display();
-    
-        ll.insert(5, 0);
+        System.out.println("Size: " + ll.getSize());
+        ll.addLast(4);
         ll.display();
-    
-        ll.insert(40, 5);
+        System.out.println("Size: " + ll.getSize());
+        ll.insert(5, 2);
         ll.display();
+        System.out.println("Size: " + ll.getSize());
+        System.out.println("Deleted first: " + ll.deleteFirst());
+        ll.display();
+        System.out.println("Size: " + ll.getSize());
+        System.out.println("Deleted last: " + ll.deleteLast());
+        ll.display();
+        System.out.println("Size: " + ll.getSize());
+        ll.delete(1);
+        ll.display();
+        System.out.println("Size: " + ll.getSize());
     }
 }    

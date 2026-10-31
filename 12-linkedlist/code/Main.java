@@ -43,5 +43,25 @@ public class Main {
         dll.display();
         dll.insert(16, 17);
         dll.display();
+
+        //Circular LinkedList
+        CircularLinkedList cll = new CircularLinkedList();
+        cll.display();
+        cll.insert(11);
+        cll.display();
+        cll.insert(12);
+        cll.display();
+        cll.insert(14);
+        cll.display();
+        cll.insert(13);
+        cll.display();
+        cll.insert(15);
+        cll.display();
+        cll.delete(13);
+        cll.display();
+        cll.delete(11);
+        cll.display();
+        cll.delete(15);
+        cll.display();
     }
 }    

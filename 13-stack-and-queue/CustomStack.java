@@ -45,7 +45,7 @@ public class CustomStack {
         return data[pointer];
     }
     
-    private boolean isFull() {
+    public boolean isFull() {
         return pointer == data.length - 1;
     }
     

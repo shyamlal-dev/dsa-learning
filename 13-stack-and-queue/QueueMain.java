@@ -27,6 +27,20 @@ public class QueueMain {
         queue.remove();
         
         queue.display();
+
+        DynamicQueue queue = new DynamicQueue(5);
+        queue.insert(11);
+        queue.insert(12);
+        queue.insert(13);
+        queue.insert(14);
+        queue.insert(15);
+        queue.insert(17);
+        
+        queue.display();
+        
+        queue.remove();
+        
+        queue.display();
     }
     
 }

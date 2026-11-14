@@ -8,7 +8,7 @@ class LinkedList {
         size = 0;
     }
     
-    public getSize(){
+    public int getSize(){
       return size;
     }
 

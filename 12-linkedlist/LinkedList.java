@@ -1,4 +1,4 @@
-class LinkedList {
+public class LinkedList {
 
     private Node head;
     private Node tail;
@@ -175,6 +175,32 @@ class LinkedList {
         }
 
         System.out.println("END");
+    }
+
+    // insert using recursion
+    public void insertRec(int value, int index) {
+        head = insertRec(value, index, head);
+    } 
+    
+    private Node insertRec(int value, int index, Node node) {
+        if(index == 0) {
+            Node temp = new Node(value, node);
+            size++;
+            return temp;
+        }
+        node.next = insertRec(value, index - 1, node.next);
+        return node;
+    } 
+}
+
+class Main {
+    public static void main(String[] args) {
+        LinkedList ll = new LinkedList();
+        ll.addFirst(2);
+        ll.addLast(1);
+        ll.display();
+        ll.insertRec(11, 2);
+        ll.display();
     }
 }
 

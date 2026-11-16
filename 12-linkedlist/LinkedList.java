@@ -191,6 +191,89 @@ public class LinkedList {
         node.next = insertRec(value, index - 1, node.next);
         return node;
     } 
+
+    // https://leetcode.com/problems/remove-duplicates-from-sorted-list
+    public void removeDuplicates() {
+        if(head == null) {
+            return;
+        }
+        
+        Node current = head;
+        
+        while(current.next != null) {
+            if(current.value == current.next.value) {
+                current.next = current.next.next;
+                size--;
+            }
+            else{
+                current = current.next;
+            }
+        }
+        
+        tail = current;
+        tail.next = null;
+    }
+    
+    // https://leetcode.com/problems/merge-two-sorted-lists/submissions/
+    //approach 1:
+    public Node mergeTwoLists(Node list1, Node list2) {
+        if(list1 == null) {
+            return list2;
+        }
+        if(list2 == null) {
+            return list1;
+        }
+
+        Node node = new Node();
+        Node head = node;
+        
+        while(list1 != null && list2 != null) {
+            if(list2.val > list1.val) {
+                node.val = list1.val;
+                node.next = new Node();
+                node = node.next;
+                list1 = list1.next;
+            }else{
+                node.val = list2.val;
+                node.next = new Node();
+                node = node.next;
+                list2 = list2.next;
+            }
+        }
+
+        if(list1 != null) {
+            node.val = list1.val;
+            node.next = list1.next;
+        }
+        if(list2 != null) {
+            node.val = list2.val;
+            node.next = list2.next;
+        }
+        return head;
+    }
+    
+    //approach 2:
+    public Node mergeTwoLists(Node list1, Node list2) {
+        Node dummy = new Node(-1);
+        Node tail = dummy;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                tail.next = list1;
+                list1 = list1.next;
+            } else {
+                tail.next = list2;
+                list2 = list2.next;
+            }
+
+            tail = tail.next;
+        }
+
+        tail.next = (list1 != null) ? list1 : list2;
+
+        return dummy.next;
+    }
+    
 }
 
 class Main {

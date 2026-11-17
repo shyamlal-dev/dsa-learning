@@ -348,7 +348,27 @@ public class LinkedList {
         tail = current;
         tail.next = null;
     }
-    
+
+    // in place reversal of linked list
+    // google, microsoft, apple, amazon: https://leetcode.com/problems/reverse-linked-list/
+    public void reverse() {
+        if(size < 2) {
+            return;
+        }
+        Node prev = null;
+        Node current = head;
+        Node next = current.next;
+        
+        while(current != null) {
+            current.next = prev;
+            prev = current;
+            current = next;
+            if(next != null) {
+                next = next.next;
+            }
+        }
+        head = prev;
+    }
 }
 
 class Main {
@@ -363,9 +383,14 @@ class Main {
         ll.addLast(7);
         ll.addLast(6);
         ll.display();
-        ll.bubbleSort(); //bubble sort
+        System.out.println("bubble sort: ");
+        ll.bubbleSort();
         ll.display();
-        ll.reverseRec(); //reverse using recursion
+        System.out.println("Revese using recursion: ");
+        ll.reverseRec();
+        ll.display();
+        System.out.println("In place reverse: ");
+        ll.reverse();
         ll.display();
     }
 }

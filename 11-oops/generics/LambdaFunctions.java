@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.function.Consumer;
+
 public class LambdaFunctions {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();

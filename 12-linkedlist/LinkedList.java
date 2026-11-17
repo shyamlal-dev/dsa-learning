@@ -330,6 +330,24 @@ public class LinkedList {
             bubbleSort(row - 1, 0);
         }
     } 
+
+    //reverse the LinkedList using recursion
+    public void reverseRec() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        reverseRec(head);
+    }
+    private void reverseRec(Node current) {
+        if(current == tail) {
+            head = current;
+            return;
+        }
+        reverseRec(current.next);
+        tail.next = current;
+        tail = current;
+        tail.next = null;
+    }
     
 }
 
@@ -339,7 +357,15 @@ class Main {
         ll.addFirst(2);
         ll.addLast(1);
         ll.display();
-        ll.insertRec(11, 2);
+        ll.insertRec(11, 2); //insert using recursion
+        ll.display();
+        ll.addLast(8);
+        ll.addLast(7);
+        ll.addLast(6);
+        ll.display();
+        ll.bubbleSort(); //bubble sort
+        ll.display();
+        ll.reverseRec(); //reverse using recursion
         ll.display();
     }
 }

@@ -179,6 +179,19 @@ public class LinkedList {
 
     // insert using recursion
     public void insertRec(int value, int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size );
+        }
+        
+        if (index == 0) {
+            addFirst(value);
+            return;
+        }
+
+        if (index == size) {
+            addLast(value);
+            return;
+        }
         head = insertRec(value, index, head);
     } 
     
@@ -273,6 +286,50 @@ public class LinkedList {
 
         return dummy.next;
     }
+
+    //bubble sort.
+    public void bubbleSort() {
+        bubbleSort(size - 1, 0); // row = size-1, col = 0 
+    }
+    
+    private void bubbleSort(int row, int col) {
+        if(row <= 0) {
+            return;
+        }
+        
+        if(col < row) {
+            Node first = get(col);
+            Node second = get(col + 1);
+        
+            if(first.value > second.value) {
+                //swap
+                if(first == head) {
+                    first.next = second.next;
+                    second.next = first;
+                    head = second;
+                }
+                else if(second == tail) {
+                    Node prev = get(col-1);
+                    prev.next = second;
+                    second.next = first;
+                    first.next = null;
+                    tail = first;
+                } 
+                else {
+                    Node prev = get(col-1);
+                    prev.next = second;
+                    first.next = second.next;
+                    second.next = first;
+                }
+            }
+            // Current pass ka next comparison
+            bubbleSort(row, col + 1);
+            
+        } else {
+            // Current pass complete, next pass start
+            bubbleSort(row - 1, 0);
+        }
+    } 
     
 }
 

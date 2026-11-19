@@ -1,6 +1,24 @@
 public class InterviewQuestions {  
     ListNode head;
     ListNode tail;
+
+    // https://leetcode.com/problems/linked-list-cycle
+    // Amazon and Microsoft
+    public boolean hasCycle(ListNode head) {
+        ListNode s = head;
+        ListNode f = head;
+        
+        while(f != null && f.next != null){
+            s = s.next;
+            f = f.next.next;
+            if(s == f) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
     // https://leetcode.com/problems/remove-duplicates-from-sorted-list
     public void removeDuplicates() {
         if(head == null) {
@@ -119,8 +137,6 @@ public class InterviewQuestions {
         tail = current;
         tail.next = null;
     }
-    
-
 }
 
 class ListNode {

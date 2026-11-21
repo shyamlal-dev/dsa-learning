@@ -6,5 +6,14 @@ public class Main {
 
         System.out.println("\nTree Structure:");
         tree.display();
+
+        System.out.println("Pre-Order traversal: ");
+        tree.preOrder();
+        
+        System.out.println("In-Order traversal:");
+        tree.inOrder();
+        
+        System.out.println("Post-Order traversal:");
+        tree.postOrder();
     }
 }

@@ -68,7 +68,6 @@ public class BinaryTree {
         preOrder(node.left);
         preOrder(node.right);
     }
-    System.out.println();
     
     //2.In-Order(Left-Node-Right)
     public void inOrder() {
@@ -82,7 +81,6 @@ public class BinaryTree {
         System.out.print(node.val + " ");
         inOrder(node.right);
     }
-    System.out.println();
     
     //3.Post-Order(Left-Right-Node)
     public void postOrder() {
@@ -96,7 +94,6 @@ public class BinaryTree {
         postOrder(node.right);
         System.out.print(node.val);
     }
-    System.out.println();
     
     private static class Node {
         int val;

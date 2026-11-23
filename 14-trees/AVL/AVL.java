@@ -83,7 +83,7 @@ public class AVL {
         }
         
         //Right heavy
-        if(height(node.left) - height(node.right) < -1 {
+        if(height(node.left) - height(node.right) < -1) {
             
             //right-right case
             if(height(node.right.right) - height(node.right.left) > 0) {
